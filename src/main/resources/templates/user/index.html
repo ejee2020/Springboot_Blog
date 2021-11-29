@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.w3.org.1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Blog</title>
+</head>
+<body>
+    <div class = "header-container">
+        <div class = "header-item" OnClick="location.href ='/user/main_page'">Logoo</div>
+        <div class = "header-item" OnClick="location.href ='http://www.naver.com'">Hello1</div>
+        <div class = "header-item" OnClick="location.href = 'http://www.daum.net'">Hello2</div>
+        <div class = "header-item" OnClick="location.href = 'http://www.instagram.com'">Hello3</div>
+    </div>
+    <div class = "login-container">
+        <div class = "login-container2">
+            <div class = "logo-container">LOGO</div>
+            <div class = "login-container3">
+                <form id = "login-form" action="#" th:object = "${UserDTO}" th:action = "@{/user/main_page}" method ="post">
+                <div class = "txt_box">
+                <input id = "ID" type="text" name = "id" required
+                    minlength="3" maxlength="10" size="10" value = "ID" th:field="*{id}"
+                    onfocus="this.value=''";>
+                </div>
+                <div class = "txt_box">
+                    <input id = "Password" type="password" name = "password" required
+                    minlength="3" maxlength="10" size="10" value = "PASSWORD" th:field = "*{password}"
+                    onfocus="this.value=''";>
+                </div>
+                <div class="button_container">
+                <button id = "login" type= "submit">Login</button>
+                </div>
+                </form>
+                <div class = "find_box">
+                    <button id = "find1" type="button" onclick="location.href = '/user/signup';">Register</button>
+                    <button id = "find2" type="button" onclick="location.href = '/user/find_id';">Find ID</button>
+                    <button id = "find3" type="button" onclick="location.href = '/user/find_password';">Find Password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    html, body {
+        height: 100%;
+    }
+    .header-container {
+        display: flex;
+        background: purple;
+        height: 10%;
+    }
+    .header-item {
+        color:white;
+        margin: 0% 0% 0% 0%;
+        height: 100%;
+        padding: 0em 1em 0em 1em;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .header-item:hover{
+        background : red;
+    }
+    .header-logo{
+        color: black;
+        margin: 0% 1% 0% 1%;
+        height: 100%;
+    }
+    .login-container{
+        height: 90%;
+        border: 1px solid grey;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-container2{
+        height: 45%;
+        width: 60%;
+        border: 1px solid grey;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction: column;
+    }
+    .login-container3{
+        height: 60%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
+    .logo-container{
+        width: 60%;
+        border: 1px solid grey;
+        height: 25%;
+    }
+    input {
+        height:50px;
+        width: 300px;
+    }
+    #login{
+        height: 50px;
+        width: 200px;
+        margin: 20px 0px 15px 0px;
+        background: purple;
+        color: white;
+        font-size: 25px;
+    }
+    .find_box{
+        display: flex;
+    }
+    #find1 {
+        font-size: 18px;
+        margin: 0 10px 0 10px;
+    }
+
+    #find2{
+        font-size: 18px;
+        margin: 0 10px 0 10px;
+    }
+    #find3{
+        font-size: 18px;
+        margin: 0 10px 0 10px;
+    }
+    .button_container{
+        display: block;
+        margin: 0 auto;
+    }
+    #login-form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .txt_box{
+        display:flex;
+        flex-direction: row;
+    }
+</style>
+<script>
+
+</script>
+
+</html>

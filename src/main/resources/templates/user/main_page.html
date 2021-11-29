@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.w3.org.1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Blog</title>
+</head>
+<body>
+<div class = "header-container">
+    <div class = "header-item" OnClick="location.href ='/user/main_page'">Logoo</div>
+    <div class = "header-item" OnClick="location.href ='http://www.naver.com'">Hello1</div>
+    <div class = "header-item" OnClick="location.href = 'http://www.daum.net'">Hello2</div>
+    <div class = "header-item" OnClick="location.href = 'http://www.instagram.com'">Hello3</div>
+    <div class = "left-container">
+        <div class = "header-item" OnClick="location.href = '/user/modify_user_info'">
+            Edit User Info
+        </div>
+    </div>
+</div>
+<div class = "login-container">
+    <div class = "category-container">
+        <h3>View by Category</h3>
+        <div class ="category" th:each="category:${Categories}">
+            <form th:action="@{/user/view_by_categories}" method="post">
+                <input type="hidden" th:value="*{category.getName()}" name="name" />
+                <button type="submit" th:text="*{category.getName()}"></button>
+            </form>
+        </div>
+    </div>
+    <div class = "login-container2">
+        <h3 th:text='${"Welcome " + UserAuth.getName() + " !"}'/>
+        <div class ="post" th:each="post:${Posts}">
+            <div th:text="${post.getTitle()}"></div>
+            <div th:text="${post.getCategory()}"></div>
+            <div th:text="${post.getPost_text()}"></div>
+            <div th:text="${post.getCreatedDate()}"></div>
+            <div class = "forms-container">
+                <div class = "form-container">
+                    <form th:action="@{/post/delete_post}" method="post">
+                        <input type="hidden" th:value="*{post.getId()}" name="id" />
+                        <button id = "delete" type="submit">Delete</button>
+                    </form>
+                </div>
+                <div class = "form-container">
+                    <form th:action="@{/post/modify_post}" method="post">
+                        <input type="hidden" th:value="*{post.getId()}" name="id" />
+                        <input type="hidden" th:value="*{post.getTitle()}" name="title" />
+                        <input type="hidden" th:value="*{post.getCategory()}" name="category" />
+                        <input type="hidden" th:value="*{post.getPost_text()}" name="post_text" />
+                        <input type="hidden" th:value="*{post.getCreatedDate()}" name="created_date" />
+                        <button id = "modify" type="submit">Modify</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class = "buttons-container">
+            <a href="/post/new_post">
+                <button>Write a Post</button>
+            </a>
+            <a href="/category/modify_categories">
+                <button>Edit categories</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+<style>
+    html, body {
+        height: 100%;
+    }
+    .header-container {
+        display: flex;
+        background: purple;
+        height: 10%;
+    }
+    .header-item {
+        color:white;
+        margin: 0% 0% 0% 0%;
+        height: 100%;
+        width:5%;
+        padding: 0em 1em 0em 1em;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .left-container{
+        display:flex;
+        flex-direction:row-reverse;
+        width:80%;
+    }
+    .user_info{
+        width:20%;
+        justify-content: center;
+        align-items:center;
+        text-align:center;
+    }
+    .header-item:hover{
+        background : red;
+    }
+    .header-logo{
+        color: black;
+        margin: 0% 1% 0% 1%;
+        height: 100%;
+    }
+    .login-container{
+        width: 100%;
+        height: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .login-container2{
+        height: 45%;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+    }
+    .login-container3{
+        height: 60%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
+    .logo-container{
+        width: 60%;
+        border: 1px solid grey;
+        height: 25%;
+    }
+    input {
+        height:50px;
+        width: 300px;
+    }
+    #login{
+        height: 50px;
+        width: 200px;
+        margin: 20px 0px 15px 0px;
+        background: purple;
+        color: white;
+        font-size: 25px;
+    }
+    .find_box{
+        display: flex;
+    }
+    #find{
+        margin: 0px 5px 0px 5px;
+        font-size: 18px;
+    }
+    .post{
+        border: 1px solid grey;
+    }
+    .category-container{
+        height: 45%;
+        width: 20%;
+        border: 1px solid grey;
+    }
+    .forms-container{
+        display:flex;
+        flex-direction:row-reverse;
+    }
+    .form-container{
+        display:flex;
+        flex-direction:column;
+    }
+    .buttons-container{
+        display:flex;
+        flex-direction:row;
+    }
+    .delete{
+        margin: 0px 5px 0px 5px;
+    }
+    .modify{
+    margin: 0px 5px 0px 5px;
+    }
+
+</style>
+<script>
+
+</script>
+
+</html>

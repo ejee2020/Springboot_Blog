@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class = "login-container">
+    <div class = "login-container2">
+        <form th:object = "${categoryDTO}" th:action = "@{/user/add_new_category}" method ="post">
+            <label for ="name-input">Name</label>
+            <input style="height:30px;font-size:30px;" id = "name-input"type="text" name = "name" required
+                   minlength="3" maxlength="10" size="10" onfocusout="" th:field="*{name}"><br>
+            <button id = "login" type= "submit">Add a new category</button>
+        </form>
+    </div>
+</div>
+</body>
+<style>
+    html, body {
+        height: 100%;
+    }
+    .login-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        border: 1px solid red;
+        justify-content: center;
+        align-items:center;
+    }
+    .login-container2{
+        height: 60%;
+        width: 50%;
+        display: flex;
+        border: 1px solid grey;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
+</style>
+</html>

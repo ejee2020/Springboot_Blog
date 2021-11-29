@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class = "header-container">
+    <div class = "header-item" OnClick="location.href ='/user/main_page'">Logoo</div>
+    <div class = "header-item" OnClick="location.href ='http://www.naver.com'">Hello1</div>
+    <div class = "header-item" OnClick="location.href = 'http://www.daum.net'">Hello2</div>
+    <div class = "header-item" OnClick="location.href = 'http://www.instagram.com'">Hello3</div>
+</div>
+<div class = "login-container">
+    <div class = "login-container2">
+        <form th:object = "${user}" th:action = "@{/user/update_user_info}" method ="post">
+            <h3 class = "label_for_item">
+                <label for ="password-input">New Password</label>
+            </h3>
+            <input id = "password-input" type="text"  required
+            minlength="3" maxlength="20" size="20" value = "" th:field="*{password}" placeholder = "Enter New Password"/><br>
+            <h3 class = "label_for_item">
+                <label for ="email-input">New Email</label>
+            </h3>
+            <input id = "email-input" type="text" required
+                   minlength="3" maxlength="20" size="20" th:field="*{email}" placeholder = "Enter New Email"/><br>
+            <h3 class = "label_for_item">
+                <label for ="name-input">New Name</label>
+            </h3>
+            <input id = "name-input" type="text"  required
+                   minlength="3" maxlength="20" size="20" th:field="*{name}" placeholder = "Enter New Name"><br>
+            <div class = "button-container">
+                <button id = "name" type= "submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<style>
+    html, body {
+        height: 100%;
+    }
+    .header-container {
+        display: flex;
+        background: purple;
+        height: 10%;
+    }
+    .header-item {
+        color:white;
+        margin: 0% 0% 0% 0%;
+        height: 100%;
+        padding: 0em 1em 0em 1em;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .login-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        border: 1px solid red;
+        justify-content: center;
+        align-items:center;
+    }
+    .login-container2{
+        height: 45%;
+        width: 60%;
+        border: 1px solid grey;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction: column;
+    }
+    .button-container{
+        justify-content: center;
+        align-items:center;
+    }
+</style>
+</html>
